@@ -1,3 +1,6 @@
 class Band {
-    // e - lägger till name, infoText, bandStart, bandEnd  
+    public String name;
+    public String infoText;
+    public int bandStart;
+    public int bandEnd;
 }
