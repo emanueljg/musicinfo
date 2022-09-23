@@ -1,9 +1,10 @@
-// e - lägger till java.util.*-import. Som thomas sa så är detta lite halvfult
-// men för vårt arbetssätt så passar det bra - det ändrar bara en rad kod!
+import java.util.*;
+
 class Band {
     public String name;
     public String infoText;
     public int bandStart;
     public int bandEnd;
-    // e - lägger till arists och artistJoinYears
+    public ArrayList<Artist> artists;
+    public HashMap<Integer, Artist> artistJoinYear;
 }
