@@ -1,1 +1,3 @@
-// emanuel gör bandet...
+class Band {
+  
+}
