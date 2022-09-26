@@ -1,3 +1,4 @@
+package  musicinfo;
 import java.util.*;
 
 class Band {   // D skriver in de sista 5
