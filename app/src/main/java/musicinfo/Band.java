@@ -7,5 +7,9 @@ class Band {   // D skriver in de sista 5
     public int bandEnd;
     public ArrayList<Artist> artists;
     public HashMap<Integer, Artist> artistJoinYear;
-    public
+    public Hashmap<String, Artist> artistInstruments;
+    public <Artist> oldArtist;
+    public Hashmap<Integer, Artists> oldArtistLeaveYears;
+    public HashMap <String, Artists> oldArtistInstruments;
+    public ArrayList<Album> albums;
 }
