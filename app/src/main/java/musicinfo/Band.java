@@ -10,6 +10,6 @@ class Band {   // D skriver in de sista 5
     public HashMap<Integer, Artist> artistJoinYear;
     public HashMap<String, Artist> artistInstruments;
     public ArrayList<Artist> oldArtist;
-    public HashMap<Integer, Artists> oldArtistLeaveYears;
+    public HashMap<Integer, Artist> oldArtistLeaveYears;
     public ArrayList<Album> albums;
 }
