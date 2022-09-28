@@ -1,10 +1,13 @@
 package musicinfo;
 
 
+import java.util.ArrayList;
+
 public class MusicItem {
 
     public String name;
     public String info;
+    public ArrayList<MusicItem> items = new ArrayList<>();
 
 
 
