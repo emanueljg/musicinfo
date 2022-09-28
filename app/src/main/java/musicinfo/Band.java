@@ -1,7 +1,7 @@
 package  musicinfo;
 import java.util.*;
 
-class Band {   // D skriver in de sista 5
+class Band {
     public String name;
     public String infoText;
     public int bandStart;
