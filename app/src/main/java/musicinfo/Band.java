@@ -1,9 +1,7 @@
 package  musicinfo;
 import java.util.*;
 
-class Band {
-    public String name;
-    public String infoText;
+class Band extends MusicItem{
     public int bandStart;
     public int bandEnd;
     public ArrayList<Artist> artists;
@@ -12,4 +10,11 @@ class Band {
     public ArrayList<Artist> oldArtist;
     public HashMap<Integer, Artist> oldArtistLeaveYears;
     public ArrayList<Album> albums;
+
+    public Band(String name, String info){
+        super(name, info);
+
+
+    }
+
 }
