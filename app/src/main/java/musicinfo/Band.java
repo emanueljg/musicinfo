@@ -33,7 +33,8 @@ class Band extends MusicItem {
     public static void removeBand(int i){
         BANDS.remove(i);
     }
-    public void addArtist(Artist artist, int year) {
+    public void addArtist(int i, int year) {
+        Artist artist = ARTISTS.get(i);
         artists.add(artist);
         artistHistories.put(artist,year);
     }
