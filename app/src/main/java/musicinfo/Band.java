@@ -29,6 +29,13 @@ class Band extends MusicItem {
         artistInstruments.put(artist, instruments);
     }
 
+    public void addArtist(Artist artist, int year) {
+        artists.add(artist);
+        artistHistories.put(artist,year);
+    }
+
+
+
     @Override
     public ArrayList<MusicItem> getItems(){
         return BANDS;
