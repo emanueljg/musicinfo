@@ -5,7 +5,7 @@ class Band extends MusicItem {
     public int bandStart;
     public int bandEnd;
     public ArrayList<Artist> artists;
-    public HashMap<String, Artist> artistInstruments;
+    public HashMap<Artist, String> artistInstruments;
     public LinkedHashMap<Artist, Integer> artistHistories;
     public ArrayList<Album> albums;
 
@@ -21,5 +21,8 @@ class Band extends MusicItem {
             }
         }
         return values;
+    }
+    public void setInstrument(Artist artist, String instruments){
+        artistInstruments.put(artist, instruments);
     }
 }
