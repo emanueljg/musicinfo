@@ -29,6 +29,9 @@ class Band extends MusicItem {
         artistInstruments.put(artist, instruments);
     }
 
+    public static void removeBand(int i){
+        BANDS.remove(i);
+    }
     @Override
     public ArrayList<MusicItem> getItems(){
         return BANDS;
