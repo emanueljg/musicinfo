@@ -10,8 +10,9 @@ class Artist extends MusicItem {
     public HashMap<Album, String> albumInstruments = new HashMap<Album, String>();
 
 
-    public Artist(String name, String info){
+    public Artist(String name, String info, int birthYear){
         super(name, info);
+        this.birthYear = birthYear;
 
     }
 
@@ -24,6 +25,7 @@ class Artist extends MusicItem {
     public void setInstrument(Album album, String instruments){
         albumInstruments.put(album, instruments);
     }
+
 
 
 }
