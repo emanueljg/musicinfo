@@ -38,6 +38,11 @@ class Band extends MusicItem {
         artistHistories.put(artist,year);
     }
 
+    public void removeArtist(int i, int year) {
+        Artist removed = artists.remove(i);
+        artistHistories.put(removed,year);
+    }
+
 
 
     @Override
