@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 class Artist extends MusicItem {
 
+    public static ArrayList<MusicItem> ARTISTS;
     public int birthYear;
     public ArrayList<Album> albums = new ArrayList<Album>();
     public HashMap<String, Album> albumInstruments = new HashMap<String, Album>();
@@ -13,6 +14,10 @@ class Artist extends MusicItem {
 
     }
 
+    @Override
+    public ArrayList<MusicItem> getItems(){
+        return ARTISTS;
+    }
 
 
 
