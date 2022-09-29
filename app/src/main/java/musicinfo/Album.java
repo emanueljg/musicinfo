@@ -1,6 +1,9 @@
 package  musicinfo;
 
+import java.util.ArrayList;
+
 class Album extends MusicItem {
+    public static ArrayList<MusicItem> ALBUMS;
     public int releaseYear;
 
 
@@ -9,5 +12,10 @@ class Album extends MusicItem {
         this.releaseYear = releaseYear;
 
 
+    }
+
+    @Override
+    public ArrayList<MusicItem> getItems(){
+        return ALBUMS;
     }
 }
