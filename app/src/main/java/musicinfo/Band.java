@@ -2,6 +2,7 @@ package  musicinfo;
 import java.util.*;
 
 class Band extends MusicItem {
+    public static ArrayList<MusicItem> BANDS;
     public int bandStart;
     public int bandEnd;
     public ArrayList<Artist> artists;
@@ -26,6 +27,11 @@ class Band extends MusicItem {
     }
     public void setInstrument(Artist artist, String instruments){
         artistInstruments.put(artist, instruments);
+    }
+
+    @Override
+    public ArrayList<MusicItem> getItems(){
+        return BANDS;
     }
 
 }
