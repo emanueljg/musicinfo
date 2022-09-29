@@ -26,6 +26,9 @@ class Artist extends MusicItem {
         albumInstruments.put(album, instruments);
     }
 
+    public void removeArtis(int i) {
+        ARTISTS.remove(i);
+    }
 
 
 }
