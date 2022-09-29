@@ -7,7 +7,6 @@ public abstract class MusicItem {
 
     public String name;
     public String info;
-    public ArrayList<MusicItem> items = new ArrayList<>();
 
 
 
