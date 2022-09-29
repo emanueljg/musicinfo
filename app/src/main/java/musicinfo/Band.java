@@ -9,8 +9,10 @@ class Band extends MusicItem {
     public LinkedHashMap<Artist, Integer> artistHistories;
     public ArrayList<Album> albums;
 
-    public Band(String name, String info) {
+    public Band(String name, String info, int bandStart, int bandEnd) {
         super(name, info);
+        this.bandStart = bandStart;
+        this.bandEnd = bandEnd;
     }
 
     public ArrayList<Integer> getArtistHistory(Artist artist) {
@@ -25,4 +27,5 @@ class Band extends MusicItem {
     public void setInstrument(Artist artist, String instruments){
         artistInstruments.put(artist, instruments);
     }
+
 }
