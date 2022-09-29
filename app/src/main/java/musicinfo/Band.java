@@ -35,7 +35,7 @@ class Band extends MusicItem {
     }
 
     public void addArtist(int i, int year) {
-        Artist artist = Artist.ARTISTS.get(i);
+        Artist artist = (Artist) Artist.ARTISTS.get(i);
         artists.add(artist);
         artistHistories.put(artist,year);
     }
