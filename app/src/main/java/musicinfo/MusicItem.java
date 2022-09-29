@@ -3,7 +3,7 @@ package musicinfo;
 
 import java.util.ArrayList;
 
-public class MusicItem {
+public abstract class MusicItem {
 
     public String name;
     public String info;
@@ -16,6 +16,7 @@ public class MusicItem {
         this.info = info;
     }
 
+    public abstract ArrayList<MusicItem> getItems();
 
 
 
