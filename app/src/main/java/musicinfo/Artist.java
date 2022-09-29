@@ -13,7 +13,7 @@ class Artist extends MusicItem {
     public Artist(String name, String info, int birthYear){
         super(name, info);
         this.birthYear = birthYear;
-
+        ARTISTS.add(this);
     }
 
     @Override

@@ -14,6 +14,7 @@ class Band extends MusicItem {
         super(name, info);
         this.bandStart = bandStart;
         this.bandEnd = bandEnd;
+        BANDS.add(this);
     }
 
     public ArrayList<Integer> getArtistHistory(Artist artist) {

@@ -10,6 +10,7 @@ class Album extends MusicItem {
     public Album(String name, String info, int releaseYear){
         super(name, info);
         this.releaseYear = releaseYear;
+        ALBUMS.add(this);
     }
 
     @Override
