@@ -1,49 +1,41 @@
-package  musicinfo;
+package musicinfo;
 import java.util.*;
 
 class Band extends MusicItem {
-    public static ArrayList<MusicItem> BANDS;
     public int bandStart;
-    public int bandEnd;
-    public ArrayList<Artist> artists;
-    public HashMap<Artist, String> artistInstruments;
-    public LinkedHashMap<Artist, Integer> artistHistories;
-    public ArrayList<Album> albums;
+    public int bandEnd = 0;
+    public ArrayList<Artist> artists = new ArrayList<>();
+    public HashMap<Artist, String> artistInstruments = new HashMap<>();
+    public LinkedHashMap<Artist, ArrayList<Integer>> artistHistories = new LinkedHashMap<>();
+    public ArrayList<Album> albums = new ArrayList<>();
 
-    public Band(String name, String info, int bandStart, int bandEnd) {
+    public Band(String name, String info, int bandStart) {
         super(name, info);
         this.bandStart = bandStart;
-        this.bandEnd = bandEnd;
-        BANDS.add(this);
+        register(Band.class, this);
     }
 
-    public ArrayList<Integer> getArtistHistory(Artist artist) {
-        ArrayList<Integer> values = new ArrayList<Integer>();
-        for (Map.Entry<Artist, Integer> i : artistHistories.entrySet()) {
-            if (i.getKey().equals(artist)) {
-                values.add(i.getValue());
-            }
-        }
-        return values;
-    }
     public void setInstrument(Artist artist, String instruments){
         artistInstruments.put(artist, instruments);
     }
 
-    public static void removeBand(int i){
-        BANDS.remove(i);
+    public ArrayList<Integer> getArtistHistory(Artist artist) {
+        if (!artistHistories.containsKey(artist)) {
+            artistHistories.put(artist, new ArrayList<Integer>());
+        }
+        return artistHistories.get(artist);
     }
 
-    public void addArtist(int i, int year) {
-        Artist artist = (Artist) Artist.ARTISTS.get(i);
+    public void addArtist(Artist artist, int year) {
         artists.add(artist);
-        artistHistories.put(artist,year);
+        getArtistHistory(artist).add(year);
     }
 
     public void removeArtist(int i, int year) {
         Artist removed = artists.remove(i);
-        artistHistories.put(removed,year);
+        getArtistHistory(removed).add(year);
     }
+
     public void show(){
             System.out.println(this.name + " (" + this.bandStart + " - " + this.bandEnd + ")");
             System.out.println( "\nMembers:");
@@ -61,18 +53,13 @@ class Band extends MusicItem {
                 System.out.println("\n" + "About:\n" + this.info);
     }
 
-    public void addAlbum(int i, int year) {
-        Album album = (Album) Album.ALBUMS.get(i);
+    public void addAlbum(Album album) {
         albums.add(album);
     }
 
-    public void removeAlbum(int i, int year) {
+    public void removeAlbum(int i) {
         albums.remove(i);
     }
 
-    @Override
-    public ArrayList<MusicItem> getItems(){
-        return BANDS;
-    }
 
 }
