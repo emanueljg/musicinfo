@@ -45,7 +45,10 @@ class Band extends MusicItem {
         artistHistories.put(removed,year);
     }
 
-
+    public void addAlbum(int i, int year) {
+        Album album = (Album) Album.ALBUMS.get(i);
+        albums.add(album);
+    }
 
     @Override
     public ArrayList<MusicItem> getItems(){
