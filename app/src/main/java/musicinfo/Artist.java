@@ -31,6 +31,10 @@ class Artist extends MusicItem {
         albums.add(album);
     }
 
+    public void removeAlbum(int i, int year) {
+        albums.remove(i);
+    }
+
     public void setInstrument(Album album, String instruments){
         albumInstruments.put(album, instruments);
     }
