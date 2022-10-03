@@ -50,6 +50,10 @@ class Band extends MusicItem {
         albums.add(album);
     }
 
+    public void removeAlbum(int i, int year) {
+        albums.remove(i);
+    }
+
     @Override
     public ArrayList<MusicItem> getItems(){
         return BANDS;
