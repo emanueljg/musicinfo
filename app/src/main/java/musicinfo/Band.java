@@ -44,6 +44,22 @@ class Band extends MusicItem {
         Artist removed = artists.remove(i);
         artistHistories.put(removed,year);
     }
+    public void show(){
+            System.out.println(this.name + " (" + this.bandStart + " - " + this.bandEnd + ")");
+            System.out.println( "\nMembers:");
+            int indexMembers = 0;
+            for (Artist value : artists) {
+                 System.out.println("(" + indexMembers + ") " + value.name);
+                 indexMembers++;
+            }
+            System.out.println("\nInstruments:");
+            int indexInstruments = 0;
+            for (Map.Entry<Artist, String> entry : artistInstruments.entrySet()) {
+            System.out.print("(" + indexInstruments + ") ");
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+            }
+                System.out.println("\n" + "About:\n" + this.info);
+    }
 
     public void addAlbum(int i, int year) {
         Album album = (Album) Album.ALBUMS.get(i);
