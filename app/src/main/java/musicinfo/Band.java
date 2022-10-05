@@ -3,15 +3,16 @@ import java.util.*;
 
 class Band extends MusicItem {
     public int bandStart;
-    public int bandEnd = 0;
+    public Integer bandEnd;
     public ArrayList<Artist> artists = new ArrayList<>();
     public HashMap<Artist, String> artistInstruments = new HashMap<>();
     public LinkedHashMap<Artist, ArrayList<Integer>> artistHistories = new LinkedHashMap<>();
     public ArrayList<Album> albums = new ArrayList<>();
 
-    public Band(String name, String info, int bandStart) {
-        super(name, info);
+    public Band(String name, int bandStart, Integer bandEnd) {
+        super(name);
         this.bandStart = bandStart;
+        this.bandEnd = bandEnd;
         register(Band.class, this);
     }
 
@@ -37,7 +38,8 @@ class Band extends MusicItem {
     }
 
     public void show(){
-            System.out.println(this.name + " (" + this.bandStart + " - " + this.bandEnd + ")");
+            String bandEnd = (this.bandEnd == null) ? "" : String.valueOf(this.bandEnd);
+            System.out.println(this.name + " (" + this.bandStart + " - " + bandEnd + ")");
             System.out.println( "\nMembers:");
             int indexMembers = 0;
             for (Artist value : artists) {

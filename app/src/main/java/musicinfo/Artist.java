@@ -11,8 +11,8 @@ class Artist extends MusicItem {
     public HashMap<Album, String> albumInstruments = new HashMap<Album, String>();
 
 
-    public Artist(String name, String info, int birthYear){
-        super(name, info);
+    public Artist(String name, int birthYear){
+        super(name);
         this.birthYear = birthYear;
         register(Artist.class, this);
     }
@@ -31,8 +31,7 @@ class Artist extends MusicItem {
         band.removeArtist(myOwnIndex(), year);
     }*/
 
-    public void addAlbum(int i) {
-        Album album = (Album) getFromRegistry(Album.class, i);
+    public void addAlbum(Album album) {
         albums.add(album);
     }
 

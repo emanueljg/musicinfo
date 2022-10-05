@@ -7,7 +7,7 @@ import java.util.regex.*;
 
 public class App {
     public static String type = "(band|artist|album)";
-    public static String name = "([ a-zA-Z0-9.]+?)";
+    public static String text = "([ a-zA-Z0-9.]+?)";
     public static String n = "(\\d+)";
     public static Map<String, Class<? extends MusicItem>> strToTypes = Map.of(
         "band", Band.class,
@@ -35,24 +35,25 @@ public class App {
 
     public static Map<String, Consumer<Matcher>> cmds = Map.ofEntries(
         entry("help", m -> { return; }),
-        entry("save " + name, m -> MusicItem.serialize(m.group(1))),
-        entry("load " + name, m -> MusicItem.deserialize(m.group(1))),
+        entry("save " + text, m -> MusicItem.serialize(m.group(1))),
+        entry("load " + text, m -> MusicItem.deserialize(m.group(1))),
 
         entry("list " + type, m -> {
             Class<? extends MusicItem> type = strToTypes.get(m.group(1));
             MusicItem.enumerate(MusicItem.getRegistryOf(type));
         }),
 
-        entry(String.format("new band %s %s", name, n, n), m -> 
-            new Band(m.group(1), "", toInt(m.group(2)))
+        entry(String.format("new band %s %s( %s)?", text, n, n), m -> { 
+            Integer bandEnd = (m.group(4) != null) ? toInt(m.group(4)) : null;
+            new Band(m.group(1), toInt(m.group(2)), bandEnd);
+        }),
+
+        entry(String.format("new artist %s %s", text, n), m ->
+            new Artist(m.group(1), toInt(m.group(2)))
         ),
 
-        entry(String.format("new artist %s %s", name, n), m ->
-            new Artist(m.group(1), "", toInt(m.group(2)))
-        ),
-
-        entry(String.format("new album %s %s", name, n), m ->
-            new Album(m.group(1), "", toInt(m.group(2)))
+        entry(String.format("new album %s %s", text, n), m ->
+            new Album(m.group(1), toInt(m.group(2)))
         ),
 
         entry(String.format("delete band %s", n), m ->
@@ -82,7 +83,7 @@ public class App {
             }
         }),
 
-        entry(String.format("set %s %s info %s", type, n, name), m -> {
+        entry(String.format("set %s %s info %s", type, n, text), m -> {
             Class<? extends MusicItem> type = strToTypes.get(m.group(1));
             MusicItem.getFromRegistry(type, toInt(m.group(2))).info = m.group(3);
         }),

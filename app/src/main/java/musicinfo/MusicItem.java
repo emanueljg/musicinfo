@@ -8,13 +8,12 @@ public abstract class MusicItem implements Serializable {
     public static Map<Class<? extends MusicItem>, List<MusicItem>> registry = new HashMap<>();
 
     public String name;
-    public String info;
+    public String info = "";
 
 
 
-    public MusicItem(String name, String info) {
+    public MusicItem(String name) {
         this.name = name;
-        this.info = "";
     }
 
     @Override
@@ -38,10 +37,9 @@ public abstract class MusicItem implements Serializable {
     }
 
     public static void serialize(String fileName) {
-        System.out.println(registry.hashCode());
         try {
-            FileOutputStream fos = new FileOutputStream(fileName);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            var fos = new FileOutputStream(fileName + ".ser");
+            var oos = new ObjectOutputStream(fos);
             oos.writeObject(registry);
             oos.close();
             fos.close();
@@ -49,10 +47,9 @@ public abstract class MusicItem implements Serializable {
     }
 
     public static void deserialize(String fileName) {
-        System.out.println(registry.hashCode());
         try {
-            FileInputStream fis = new FileInputStream(fileName);
-            ObjectInputStream ois = new ObjectInputStream(fis);
+            var fis = new FileInputStream(fileName + ".ser");
+            var ois = new ObjectInputStream(fis);
             registry = (HashMap) ois.readObject();
             ois.close();
             fis.close();
