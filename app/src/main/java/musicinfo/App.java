@@ -40,7 +40,7 @@ public class App {
             }
             if (!found) { 
                 System.out.printf("Command \"%s\" not found. " +
-                                  "Type \"help\". for a command reference.\n",
+                                  "Type \"help\" for a command reference.\n",
                                   input);
             }
         } 
