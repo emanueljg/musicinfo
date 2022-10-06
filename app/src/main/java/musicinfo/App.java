@@ -24,6 +24,7 @@ public class App {
         Scanner in = new Scanner(System.in);
         while (true) { 
             String input = in.nextLine();
+            boolean found = false;
             for (Map.Entry<String, Consumer<Matcher>> cmd : cmds.entrySet()) {
                 Matcher m = Pattern.compile(cmd.getKey()).matcher(input);
                 if (m.matches()) { 
@@ -33,10 +34,16 @@ public class App {
                         System.out.printf("A music item with that index does not exist (%s)\n",
                                           e.getMessage());
                     }
+                    found = true;
                     break;
                 }
             }
-        }
+            if (!found) { 
+                System.out.printf("Command \"%s\" not found. " +
+                                  "Type \"help\". for a command reference.\n",
+                                  input);
+            }
+        } 
     }
 
     public static Map<String, Consumer<Matcher>> cmds = Map.ofEntries(
@@ -131,12 +138,7 @@ public class App {
             Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
             Band bands = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
             bands.addAlbum(album);
-        }),
-
-        entry(".*", m -> System.out.printf("Command \"%s\" not found. " +
-                                           "Type \"help\". for a command reference.\n",
-                                           m.group(0))
-        )
+        })
     );
 
 
