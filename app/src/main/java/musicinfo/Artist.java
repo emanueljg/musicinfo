@@ -48,8 +48,8 @@ class Artist extends MusicItem {
     public void show() {
         System.out.println(this.name + " (" + this.birthYear + ")");
         LocalDate myObj = LocalDate.now();
-        int Year = myObj.getYear();
-        System.out.println("Age: " + (Year - birthYear) + " years old");
+        int year = myObj.getYear();
+        System.out.println("Age: " + (year - birthYear) + " years old");
 
         System.out.println("\n" + this.name + " is a member of the following bands:");
         int artistCounter = 1;
