@@ -46,8 +46,16 @@ class Band extends MusicItem {
                  System.out.println("(" + indexMembers + ") " + value.name);
                  indexMembers++;
             }
+
+            System.out.println("\n" + "Albums:");
+            int albumCounter = 1;
+            for (Album album : albums) {
+                System.out.println("(" + albumCounter + ") " + album + " (" + album.releaseYear + ")");
+                albumCounter++;
+            }
+
             System.out.println("\nInstruments:");
-            int indexInstruments = 0;
+            int indexInstruments = 1;
             for (Map.Entry<Artist, String> entry : artistInstruments.entrySet()) {
             System.out.print("(" + indexInstruments + ") ");
             System.out.println(entry.getKey() + " - " + entry.getValue());

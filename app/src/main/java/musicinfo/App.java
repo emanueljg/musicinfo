@@ -120,6 +120,12 @@ public class App {
             Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
             Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(2)) - 1);
             artist.addAlbum(album);
+        }),
+
+        entry(String.format("add album %s to band %s", n, n), m -> {
+            Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
+            Band bands = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
+            bands.addAlbum(album);
         })
 
 
