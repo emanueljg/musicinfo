@@ -27,7 +27,12 @@ public class App {
             for (Map.Entry<String, Consumer<Matcher>> cmd : cmds.entrySet()) {
                 Matcher m = Pattern.compile(cmd.getKey()).matcher(input);
                 if (m.matches()) { 
-                    cmd.getValue().accept(m);
+                    try {
+                        cmd.getValue().accept(m);
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.printf("A music item with that index does not exist (%s)\n",
+                                          e.getMessage());
+                    }
                     break;
                 }
             }
