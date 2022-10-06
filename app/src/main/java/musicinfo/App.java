@@ -114,6 +114,12 @@ public class App {
         entry(String.format("show artist %s", n), m -> {
             Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(1)) - 1);
             artist.show();
+        }),
+
+        entry(String.format("add album %s to artist %s", n, n), m -> {
+            Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
+            Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(2)) - 1);
+            artist.addAlbum(album);
         })
 
 

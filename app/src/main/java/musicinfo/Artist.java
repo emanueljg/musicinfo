@@ -12,7 +12,7 @@ class Artist extends MusicItem {
     public HashMap<Album, String> albumInstruments = new HashMap<Album, String>();
 
 
-    public Artist(String name, int birthYear){
+    public Artist(String name, int birthYear) {
         super(name);
         this.birthYear = birthYear;
         register(Artist.class, this);
@@ -41,15 +41,15 @@ class Artist extends MusicItem {
         albumInstruments.remove(album);
     }
 
-    public void setInstrument(Album album, String instruments){
+    public void setInstrument(Album album, String instruments) {
         albumInstruments.put(album, instruments);
     }
 
-    public void show(){
+    public void show() {
         System.out.println(this.name + " (" + this.birthYear + ")");
         LocalDate myObj = LocalDate.now();
         int Year = myObj.getYear();
-        System.out.println("Age: " + (Year - birthYear) +" years old");
+        System.out.println("Age: " + (Year - birthYear) + " years old");
 
         System.out.println("\n" + this.name + " is a member of the following bands:");
         int artistCounter = 1;
@@ -60,12 +60,18 @@ class Artist extends MusicItem {
                 artistCounter++;
             }
         }
-        System.out.println("\n" + "About:\n" + this.info);
+        System.out.println("\n" + this.name + "'s released albums:");
+        int albumCounter = 1;
+        for (Album album : albums) {
+            System.out.println("(" + albumCounter + ") " + album + " (" + album.releaseYear + ")");
+            albumCounter++;
         }
-
+        System.out.println("\n" + "About:\n" + this.info);
 
 
     }
+}
+
 
 
 
