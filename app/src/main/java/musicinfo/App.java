@@ -20,6 +20,7 @@ public class App {
     }
 
     public static void main(String[] args) {
+        System.out.println("---------------------------------------------------------------------------------------------\nWelcome to MusicInfo, developed by Emanuel, Dennis, Max & Pontus!\nThe program is quite hard to understand, if you ever may need help please use the 'help' command!\n---------------------------------------------------------------------------------------------");
         Scanner in = new Scanner(System.in);
         while (true) { 
             String input = in.nextLine();
