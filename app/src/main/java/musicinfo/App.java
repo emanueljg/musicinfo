@@ -131,10 +131,12 @@ public class App {
             Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
             Band bands = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
             bands.addAlbum(album);
-        })
+        }),
 
-
-
+        entry(".*", m -> System.out.printf("Command \"%s\" not found. " +
+                                           "Type \"help\". for a command reference.\n",
+                                           m.group(0))
+        )
     );
 
 
