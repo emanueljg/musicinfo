@@ -76,6 +76,11 @@ public class App {
             band.removeAlbum(toInt(m.group(1)) - 1);
         }),
 
+        entry(String.format("remove album %s from artist %s", n, n), m -> {
+            Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(2)) - 1);
+            artist.removeAlbum(toInt(m.group(1)) - 1);
+        }),
+
         entry(String.format("delete album %s", n), m -> {
             var album = (Album) MusicItem.unregister(Album.class, toInt(m.group(1)) - 1);
             for (MusicItem musicItem : MusicItem.getRegistryOf(Band.class)) {
