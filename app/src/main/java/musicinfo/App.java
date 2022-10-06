@@ -58,11 +58,11 @@ public class App {
         ),
 
         entry(String.format("delete band %s", n), m ->
-            MusicItem.unregister(Band.class, toInt(m.group(1)))
+            MusicItem.unregister(Band.class, toInt(m.group(1)) - 1)
         ),
 
         entry(String.format("delete artist %s", n), m -> {
-            Artist artist = (Artist) MusicItem.unregister(Artist.class, toInt(m.group(1)));
+            var artist = (Artist) MusicItem.unregister(Artist.class, toInt(m.group(1)) - 1);
             for (MusicItem musicItem : MusicItem.getRegistryOf(Band.class)) {
                 Band band = (Band) musicItem;
                 band.artists.remove(artist);
@@ -72,7 +72,7 @@ public class App {
         }),
 
         entry(String.format("delete album %s", n), m -> {
-            Album album = (Album) MusicItem.unregister(Album.class, toInt(m.group(1)));
+            var album = (Album) MusicItem.unregister(Album.class, toInt(m.group(1)) - 1);
             for (MusicItem musicItem : MusicItem.getRegistryOf(Band.class)) {
                 Band band = (Band) musicItem;
                 band.albums.remove(album);
@@ -86,18 +86,18 @@ public class App {
 
         entry(String.format("set %s %s info %s", type, n, text), m -> {
             Class<? extends MusicItem> type = strToTypes.get(m.group(1));
-            MusicItem.getFromRegistry(type, toInt(m.group(2))).info = m.group(3);
+            MusicItem.getFromRegistry(type, toInt(m.group(2)) - 1).info = m.group(3);
         }),
 
         entry(String.format("artist %s join %s in %s", n, n, n), m -> {
-            Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(1)));
-            Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)));
+            var artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(1)) - 1);
+            Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
             int year = toInt(m.group(3));
             band.addArtist(artist, year);
         }),
 
         entry(String.format("show band %s", n), m -> {
-            Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(1)));
+            Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(1)) - 1);
             band.show();
         })
     );

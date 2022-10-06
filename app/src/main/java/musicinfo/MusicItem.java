@@ -58,7 +58,7 @@ public abstract class MusicItem implements Serializable {
 
     public static void enumerate(List li) {
         for (int i = 0; i < li.size(); i++) {
-            System.out.println("(" + i + ") " + li.get(i));
+            System.out.println("(" + (i + 1) + ") " + li.get(i));
         }
     }
 
