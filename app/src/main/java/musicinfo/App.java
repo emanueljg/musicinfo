@@ -109,7 +109,17 @@ public class App {
         entry(String.format("show band %s", n), m -> {
             Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(1)) - 1);
             band.show();
+        }),
+
+        entry(String.format("show artist %s", n), m -> {
+            Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(1)) - 1);
+            artist.show();
         })
+
+
+
     );
+
+
 }
 

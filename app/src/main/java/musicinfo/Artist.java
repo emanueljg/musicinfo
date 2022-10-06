@@ -1,6 +1,7 @@
 package musicinfo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -43,4 +44,29 @@ class Artist extends MusicItem {
         albumInstruments.put(album, instruments);
     }
 
-}
+    public void show(){
+        System.out.println(this.name + " (" + this.birthYear + ")");
+        LocalDate myObj = LocalDate.now();
+        int Year = myObj.getYear();
+        System.out.println("Age: " + (Year - birthYear) +" years old");
+
+        System.out.println("\n" + this.name + " is a member of the following bands:");
+        int artistCounter = 1;
+        for (MusicItem musicItem : MusicItem.getRegistryOf(Band.class)) {
+            Band band = (Band) musicItem;
+            if (band.artists.contains(this)) {
+                System.out.println("(" + artistCounter + ") " + band.name);
+                artistCounter++;
+            }
+        }
+        System.out.println("\n" + "About:\n" + this.info);
+        }
+
+
+
+    }
+
+
+
+
+

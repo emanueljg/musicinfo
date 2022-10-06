@@ -41,7 +41,7 @@ class Band extends MusicItem {
             String bandEnd = (this.bandEnd == null) ? "" : String.valueOf(this.bandEnd);
             System.out.println(this.name + " (" + this.bandStart + " - " + bandEnd + ")");
             System.out.println( "\nMembers:");
-            int indexMembers = 0;
+            int indexMembers = 1;
             for (Artist value : artists) {
                  System.out.println("(" + indexMembers + ") " + value.name);
                  indexMembers++;
