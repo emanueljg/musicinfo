@@ -1,9 +1,11 @@
 package musicinfo;
 
+import javax.sound.midi.Instrument;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 class Artist extends MusicItem {
 
@@ -69,6 +71,13 @@ class Artist extends MusicItem {
         for (Album album : albums) {
             System.out.println("(" + albumCounter + ") " + album + " (" + album.releaseYear + ")");
             albumCounter++;
+        }
+
+        System.out.println("\n" + this.name + "'s album instruments");
+        int instrumentCounter = 1;
+        for (Map.Entry<Album, String> entry : albumInstruments.entrySet()) {
+            System.out.println("(" + instrumentCounter + ") " + entry.getKey() + " - " + entry.getValue());
+            instrumentCounter++;
         }
         System.out.println("\n" + "About:\n" + this.info);
 
