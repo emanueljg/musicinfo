@@ -11,7 +11,11 @@ class Artist extends MusicItem {
     public ArrayList<Album> albums = new ArrayList<Album>();
     public HashMap<Album, String> albumInstruments = new HashMap<Album, String>();
 
-
+    public int getAge() {
+        int year = 2022;
+        int age = year - birthYear;
+        return age;
+    }
     public Artist(String name, int birthYear) {
         super(name);
         this.birthYear = birthYear;
