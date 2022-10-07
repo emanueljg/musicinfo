@@ -98,7 +98,7 @@ public class App {
             artist.removeAlbum(toInt(m.group(1)) - 1);
         }),
 
-        entry(String.format("set instrument %s to artist %s in album %s", text, n, n), m -> { //SET INSTRUMENT TO SOLOARTIST
+        entry(String.format("set instrument %s to artist %s in album %s", text, n, n), m -> {
             Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(2)) - 1);
             int calculatingInt = 1;
             for (Album value : artist.albums) {
