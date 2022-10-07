@@ -145,7 +145,7 @@ public class App {
             Band bands = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
             bands.addAlbum(album);
         }),
-        entry(String.format("show album %s", text), m -> {
+        entry(String.format("show album %s", n), m -> {
             Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
             album.show();
             })
