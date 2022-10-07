@@ -46,6 +46,9 @@ public class App {
         } 
     }
 
+    // Matcher m = Pattern.compile("hello (\\w+)").matcher("hello world");
+    // sout(m.group(0))
+    // System.out.println(m.group(1));  world
     public static Map<String, Consumer<Matcher>> cmds = Map.ofEntries(
         entry("help", m -> { return; }),
         entry("save " + text, m -> MusicItem.serialize(m.group(1))),
@@ -106,6 +109,7 @@ public class App {
             }
         }),
 
+        // set
         entry(String.format("set %s %s info %s", type, n, text), m -> {
             Class<? extends MusicItem> type = strToTypes.get(m.group(1));
             MusicItem.getFromRegistry(type, toInt(m.group(2)) - 1).info = m.group(3);
@@ -138,7 +142,12 @@ public class App {
             Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
             Band bands = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
             bands.addAlbum(album);
-        })
+        }),
+
+            entry(String.format("show album %s", n), m -> {
+                Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
+                album.show();
+            })
     );
 
 

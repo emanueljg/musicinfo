@@ -11,4 +11,14 @@ class Album extends MusicItem {
         this.releaseYear = releaseYear;
         register(Album.class, this);
     }
+
+    public void show() {
+        System.out.println("\n" + this.name + " " + "( " + releaseYear + " )");
+        System.out.println("\n" + "About:\n" + this.info);
+    }
+
+
+
+
+
 }
