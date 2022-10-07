@@ -110,6 +110,18 @@ public class App {
             }
         }),
 
+        entry(String.format("set instrument %s to artist %s in band %s", text, n, n), m -> {
+            Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(3)) - 1);
+            int calculatingInt = 1;
+            for (Artist value : band.artists) {
+                if (calculatingInt >= toInt(m.group(2))) {
+                    band.setInstrument(value, m.group(1));
+                    break;
+                }
+                calculatingInt++;
+            }
+        }),
+
         entry(String.format("delete album %s", n), m -> {
             var album = (Album) MusicItem.unregister(Album.class, toInt(m.group(1)) - 1);
             for (MusicItem musicItem : MusicItem.getRegistryOf(Band.class)) {

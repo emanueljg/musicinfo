@@ -59,6 +59,7 @@ class Band extends MusicItem {
             for (Map.Entry<Artist, String> entry : artistInstruments.entrySet()) {
             System.out.print("(" + indexInstruments + ") ");
             System.out.println(entry.getKey() + " - " + entry.getValue());
+            indexInstruments++;
             }
                 System.out.println("\n" + "About:\n" + this.info);
     }
