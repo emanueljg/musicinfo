@@ -129,6 +129,19 @@ public class App {
             MusicItem.getFromRegistry(type, toInt(m.group(2)) - 1).info = m.group(3);
         }),
 
+        entry(String.format("set instrument %s to artist %s in band %s", text, n, n), m -> {
+             Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(3)) - 1);
+             int calculatingInt = 1;
+             for (Artist value : band.artists) {
+                 if (calculatingInt >= toInt(m.group(2))) {
+                     band.setInstrument(value, m.group(1));
+                     break;
+                    }
+                    calculatingInt++;
+                }
+        }),
+
+
         entry(String.format("artist %s join %s in %s", n, n, n), m -> {
             var artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(1)) - 1);
             Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
@@ -160,7 +173,9 @@ public class App {
         entry(String.format("show album %s", n), m -> {
             Album album = (Album) MusicItem.getFromRegistry(Album.class, toInt(m.group(1)) - 1);
             album.show();
-            })
+        })
+
+
     );
 
 
