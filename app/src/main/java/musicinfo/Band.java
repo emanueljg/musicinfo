@@ -6,7 +6,7 @@ class Band extends MusicItem {
     public Integer bandEnd;
     public ArrayList<Artist> artists = new ArrayList<>();
     public HashMap<Artist, String> artistInstruments = new HashMap<>();
-    public LinkedHashMap<Artist, ArrayList<Integer>> artistHistories = new LinkedHashMap<>();
+    public LinkedHashMap<Artist, List<Integer>> artistHistories = new LinkedHashMap<>();
     public ArrayList<Album> albums = new ArrayList<>();
 
     public Band(String name, int bandStart, Integer bandEnd) {
@@ -20,7 +20,7 @@ class Band extends MusicItem {
         artistInstruments.put(artist, instruments);
     }
 
-    public ArrayList<Integer> getArtistHistory(Artist artist) {
+    public List<Integer> getArtistHistory(Artist artist) {
         if (!artistHistories.containsKey(artist)) {
             artistHistories.put(artist, new ArrayList<Integer>());
         }
@@ -28,13 +28,24 @@ class Band extends MusicItem {
     }
 
     public void addArtist(Artist artist, int year) {
-        artists.add(artist);
-        getArtistHistory(artist).add(year);
+        List<Integer> artistHistory = getArtistHistory(artist);
+        if (artistHistory.size() % 2 != 0) {
+            System.out.printf("artist %s can't join band %s; already in it\n", artist, this);
+        } else {
+            artists.add(artist);
+            artistHistory.add(year);
+        }
     }
 
     public void removeArtist(int i, int year) {
-        Artist removed = artists.remove(i);
-        getArtistHistory(removed).add(year);
+        Artist artist = artists.get(i);
+        List<Integer> artistHistory = getArtistHistory(artist);
+        if (artistHistory.size() % 2 == 0) {
+            System.out.printf("artist %s can't leave band %s; not in it\n", artist, this);
+        } else {
+            artists.remove(i);
+            artistHistory.add(year);
+        }
     }
 
     public void show(){
@@ -61,7 +72,22 @@ class Band extends MusicItem {
             System.out.println(entry.getKey() + " - " + entry.getValue());
             indexInstruments++;
             }
-                System.out.println("\n" + "About:\n" + this.info);
+            System.out.println("\n" + "About:\n" + this.info);
+
+            System.out.println("\nMember history:");
+            for (Map.Entry<Artist, List<Integer>> artistHistory : artistHistories.entrySet()) {
+                System.out.printf("%s:\n", artistHistory.getKey());
+                List<Integer> history = artistHistory.getValue();
+                for (int i = 0; i < history.size(); i++) {
+                    if (i == 0) { 
+                        System.out.printf("  - joined in %d\n", history.get(i)); 
+                    } else if (i % 2 != 0) {
+                        System.out.printf("  - left in %d\n", history.get(i));
+                    } else {
+                        System.out.printf("  - rejoined in %d\n", history.get(i));
+                    }
+                }
+            }
     }
 
     public void addAlbum(Album album) {

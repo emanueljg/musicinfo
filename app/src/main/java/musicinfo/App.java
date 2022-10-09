@@ -98,16 +98,10 @@ public class App {
             artist.removeAlbum(toInt(m.group(1)) - 1);
         }),
 
-        entry(String.format("set instrument %s to artist %s in album %s", text, n, n), m -> {
-            Artist artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(2)) - 1);
-            int calculatingInt = 1;
-            for (Album value : artist.albums) {
-                if(calculatingInt >= toInt(m.group(3))) {
-                    artist.setInstrument(value, m.group(1));
-                    break;
-                }
-                calculatingInt++;
-            }
+        entry(String.format("set album %s instrument %s for artist %s", n, text, n), m -> {
+            var artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(3)) - 1);
+            Album album = artist.albums.get(toInt(m.group(1)) - 1);
+            artist.albumInstruments.put(album, m.group(2));
         }),
 
         entry(String.format("delete album %s", n), m -> {
@@ -129,24 +123,38 @@ public class App {
             MusicItem.getFromRegistry(type, toInt(m.group(2)) - 1).info = m.group(3);
         }),
 
-        entry(String.format("set instrument %s to artist %s in band %s", text, n, n), m -> {
-             Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(3)) - 1);
-             int calculatingInt = 1;
-             for (Artist value : band.artists) {
-                 if (calculatingInt >= toInt(m.group(2))) {
-                     band.setInstrument(value, m.group(1));
-                     break;
-                    }
-                    calculatingInt++;
-                }
+        entry(String.format("set artist %s instrument %s for band %s", n, text, n), m -> {
+            var band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(3)) - 1);
+            Artist artist = band.artists.get(toInt(m.group(1)) - 1);
+            band.artistInstruments.put(artist, m.group(2));
         }),
 
-
-        entry(String.format("artist %s join %s in %s", n, n, n), m -> {
+        entry(String.format("add artist %s to band %s in %s", n, n, n), m -> {
             var artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(1)) - 1);
-            Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
+            var band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
             int year = toInt(m.group(3));
             band.addArtist(artist, year);
+        }),
+
+        entry(String.format("remove artist %s from band %s in %s", n, n, n), m -> {
+            int artist = toInt(m.group(1)) - 1;
+            Band band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(2)) - 1);
+            int year = toInt(m.group(3));
+            band.removeArtist(artist, year);
+        }),
+
+        entry(String.format("add band %s to artist %s in %s", n, n, n), m -> {
+            var band = (Band) MusicItem.getFromRegistry(Band.class, toInt(m.group(1)) - 1);
+            var artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(2)) - 1);
+            int year = toInt(m.group(3));
+            artist.addBand(band, year);
+        }),
+
+        entry(String.format("remove band %s from artist %s in %s", n, n, n), m -> {
+            int band = toInt(m.group(1)) - 1;
+            var artist = (Artist) MusicItem.getFromRegistry(Artist.class, toInt(m.group(2)) - 1);
+            int year = toInt(m.group(3));
+            artist.removeBand(band, year);
         }),
 
         entry(String.format("show band %s", n), m -> {

@@ -16,9 +16,4 @@ class Album extends MusicItem {
         System.out.println("\n" + this.name + " " + "( " + releaseYear + " )");
         System.out.println("\n" + "About:\n" + this.info);
     }
-
-
-
-
-
 }

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 class Artist extends MusicItem {
 
@@ -24,19 +25,31 @@ class Artist extends MusicItem {
         register(Artist.class, this);
     }
 
-    /*public int myOwnIndex() {
+    public int myOwnIndex() {
         return getRegistryOf(Artist.class).indexOf(this);
     }
 
-    public void addBand(int i, int year) {
-        Band band = (Band) getFromRegistry(Band.class, i);
-        band.addArtist(myOwnIndex(), year);        
+    public List<Band> getBandsView() {
+        List<Band> bands = new ArrayList<>();
+        for (MusicItem musicItem : getRegistryOf(Band.class)) {
+            Band band = (Band) musicItem;
+            if (band.artists.contains(this)) {
+                bands.add(band);
+            }
+        }
+        return bands;
+    }
+
+    public void addBand(Band band, int year) {
+        band.addArtist(this, year);        
     }
 
     public void removeBand(int i, int year) {
-        Band band = (Band) getFromRegistry(Band.class, i);
-        band.removeArtist(myOwnIndex(), year);
-    }*/
+        Band band = getBandsView().get(i);
+        int myIndexInBand = band.artists.indexOf(this);
+        band.removeArtist(myIndexInBand, year);
+    }
+
 
     public void addAlbum(Album album) {
         albums.add(album);
@@ -57,15 +70,6 @@ class Artist extends MusicItem {
         int year = myObj.getYear();
         System.out.println("Age: " + (year - birthYear) + " years old");
 
-        System.out.println("\n" + this.name + " is a member of the following bands:");
-        int artistCounter = 1;
-        for (MusicItem musicItem : MusicItem.getRegistryOf(Band.class)) {
-            Band band = (Band) musicItem;
-            if (band.artists.contains(this)) {
-                System.out.println("(" + artistCounter + ") " + band.name);
-                artistCounter++;
-            }
-        }
         System.out.println("\n" + this.name + "'s released albums:");
         int albumCounter = 1;
         for (Album album : albums) {
@@ -78,6 +82,24 @@ class Artist extends MusicItem {
         for (Map.Entry<Album, String> entry : albumInstruments.entrySet()) {
             System.out.println("(" + instrumentCounter + ") " + entry.getKey() + " - " + entry.getValue());
             instrumentCounter++;
+        }
+
+        System.out.println("\n" + this.name + "'s bands:");
+        enumerate(getBandsView());
+
+        System.out.println("\nBand history:");
+        for (Band band : getBandsView()) {
+            System.out.printf("%s:\n", band);
+            List<Integer> history = band.artistHistories.get(this);
+            for (int i = 0; i < history.size(); i++) {
+                if (i == 0) { 
+                    System.out.printf("  - joined in %d\n", history.get(i)); 
+                } else if (i % 2 != 0) {
+                    System.out.printf("  - left in %d\n", history.get(i));
+                } else {
+                    System.out.printf("  - rejoined in %d\n", history.get(i));
+                }
+            }
         }
         System.out.println("\n" + "About:\n" + this.info);
 
