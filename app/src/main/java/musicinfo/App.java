@@ -68,9 +68,9 @@ public class App {
                         
                         *** use the list command to find index ***
                         
-                        delete band (bandIndex) : deletes the band of the suggested index (list band to get index)
-                        delete artist (artistIndex) : deletes the artist of the suggested index (list artist to get index)
-                        delete album (albumIndex) : deletes the album of the suggested index (list album to get index)
+                        delete band (bandIndex) : deletes the band of the suggested index
+                        delete artist (artistIndex) : deletes the artist of the suggested index
+                        delete album (albumIndex) : deletes the album of the suggested index
                         
                         remove album (albumIndex) from band (bandIndex): remove album from band
                         remove album (albumIndex) from artist (artistIndex): remove album from artist
