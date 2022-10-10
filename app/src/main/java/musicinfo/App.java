@@ -53,7 +53,13 @@ public class App {
     // sout(m.group(0))
     // System.out.println(m.group(1));  world
     public static Map<String, Consumer<Matcher>> cmds = Map.ofEntries(
-        entry("help", m -> { return; }),
+        entry("help", m -> { 
+            String help = """
+                help: print this help message
+                save (filename): saves the current state of the program
+            """;
+            System.out.println(help);
+        }),
         entry("save " + text, m -> MusicItem.serialize(m.group(1))),
         entry("load " + text, m -> MusicItem.deserialize(m.group(1))),
 
