@@ -72,16 +72,16 @@ public class App {
                         delete artist (artistIndex) : deletes the artist of the suggested index
                         delete album (albumIndex) : deletes the album of the suggested index
                         
-                        remove album (albumIndex) from band (bandIndex): remove album from band
-                        remove album (albumIndex) from artist (artistIndex): remove album from artist
-                        remove artist (artistIndex) from band (bandIndex) in (leaveYear): remove artist that left in year from band
-                        remove band (bandIndex) from artist (artistIndex) in (leaveYear): remove band from artist that left in year
-                        
                         add artist (artistIndex) to band (bandIndex) in (joinyear): add artist to band
                         add band (bandIndex) to artist (artistIndex) in (joinyear): add band to artist
                         add album (albumIndex) to artist (artistIndex): add album to artist
                         add album (albumIndex) to band (bandIndex): add album to band
                         
+                        remove album (albumIndex) from band (bandIndex): remove album from band
+                        remove album (albumIndex) from artist (artistIndex): remove album from artist
+                        remove artist (artistIndex) from band (bandIndex) in (leaveYear): remove artist that left in year from band
+                        remove band (bandIndex) from artist (artistIndex) in (leaveYear): remove band from artist that left in year
+
                         set album (albumIndex) instrument (text) for artist (artistIndex): sets an instrument to a artist on a album
                         set artist (artistIndex) instrument (text) for band (bandIndex) : sets an instrument to a artist in a band
                         set (band|artist|album) (Index) info (freetext) : adds "about" information given (band|artist|album)
