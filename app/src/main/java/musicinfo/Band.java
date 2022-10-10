@@ -40,12 +40,8 @@ class Band extends MusicItem {
     public void removeArtist(int i, int year) {
         Artist artist = artists.get(i);
         List<Integer> artistHistory = getArtistHistory(artist);
-        if (artistHistory.size() % 2 == 0) {
-            System.out.printf("artist %s can't leave band %s; not in it\n", artist, this);
-        } else {
-            artists.remove(i);
-            artistHistory.add(year);
-        }
+        artists.remove(i);
+        artistHistory.add(year);
     }
 
     public void show(){
