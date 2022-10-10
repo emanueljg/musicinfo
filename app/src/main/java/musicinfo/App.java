@@ -76,6 +76,11 @@ public class App {
                         remove album (albumIndex) from artist (artistIndex): remove album from artist
                         remove artist (artistIndex) from band (bandIndex) in (leaveYear): remove artist that left in year from band
                         remove band (bandIndex) from artist (artistIndex) in (leaveYear): remove band from artist that left in year
+                        
+                        add artist (artistIndex) to band (bandIndex): add artist to band
+                        add band (bandIndex) to artist (artistIndex): add band to artist
+                        add album (albumIndex) to artist (artistIndex): add album to artist
+                        add album (albumIndex) to band (bandIndex): add album to band
                     """;
             System.out.println(help);
         }),
