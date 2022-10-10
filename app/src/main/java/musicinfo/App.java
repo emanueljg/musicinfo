@@ -58,11 +58,13 @@ public class App {
                         help: print this help message
                         save (filename): saves the current state of the program
                         load (filename): load the saved file
+                        
                         list (band|artist|album): lists all of the musicItems.
+                        show (band|artist|album) (index): show musicItem
                         
                         new band (name) (bandStart) [bandEnd]: creates a new band
                         new artist (name) (birthYear): creates a new artist
-                        new album (name) (releaseYear): creates a new album 
+                        new album (name) (releaseYear): creates a new album
                         
                         *** use the list command to find index ***
                         
