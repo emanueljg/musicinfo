@@ -58,6 +58,11 @@ public class App {
                 help: print this help message
                 save (filename): saves the current state of the program
                 load (filename): load the saved file
+                
+                new band (name) (bandStart) [bandEnd]: creates a new band.
+                new artist (name) (birthYear): creates a new artist.
+                new album (name) (releaseYear): creates a new album.
+                
             """;
             System.out.println(help);
         }),
