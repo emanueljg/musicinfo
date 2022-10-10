@@ -63,7 +63,9 @@ public class App {
                         new band (name) (bandStart) [bandEnd]: creates a new band
                         new artist (name) (birthYear): creates a new artist
                         new album (name) (releaseYear): creates a new album 
+                        
                         *** use the list command to find index ***
+                        
                         delete band (bandIndex) : deletes the band of the suggested index (list band to get index)
                         delete artist (artistIndex) : deletes the artist of the suggested index (list artist to get index)
                         delete album (albumIndex) : deletes the album of the suggested index (list album to get index)
