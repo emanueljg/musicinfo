@@ -67,6 +67,10 @@ public class App {
                         delete artist (artistIndex) : deletes the artist of the suggested index (list artist to get index)
                         delete album (albumIndex) : deletes the album of the suggested index (list album to get index)
                         
+                        remove album (albumIndex) from band (bandIndex): remove album from band
+                        remove album (albumIndex) from artist (artistIndex): remove album from artist
+                        remove artist (artistIndex) from band (bandIndex) in (leaveYear): remove artist that left in year from band
+                        remove band (bandIndex) from artist (artistIndex) in (leaveYear): remove band from artist that left in year
                     """;
             System.out.println(help);
         }),
