@@ -81,6 +81,11 @@ public class App {
                         add band (bandIndex) to artist (artistIndex): add band to artist
                         add album (albumIndex) to artist (artistIndex): add album to artist
                         add album (albumIndex) to band (bandIndex): add album to band
+                        
+                        set album (albumIndex) instrument (text) for artist (artistIndex): sets an instrument to a artist on a album
+                        set (band|artist|album) (Index) info (freetext) : adds "about" information given (band|artist|album)
+                        set artist (artistIndex) instrument (text) for band (bandIndex) : sets an instrument to a artist in a band
+                        
                     """;
             System.out.println(help);
         }),
