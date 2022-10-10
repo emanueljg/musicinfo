@@ -57,6 +57,7 @@ public class App {
             String help = """
                 help: print this help message
                 save (filename): saves the current state of the program
+                load (filename): load the saved file
             """;
             System.out.println(help);
         }),
