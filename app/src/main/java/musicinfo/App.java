@@ -9,7 +9,8 @@ import java.util.regex.*;
 
 public class App {
     public static String type = "(band|artist|album)";
-    public static String text = "([ a-zA-Z0-9.]+?)";
+    public static String text = "([ a-zA-Z0-9.åäö]+?)";
+    public static String freetext = "([ a-zA-Z0-9.?!,:;åäö]+?)";
     public static String n = "(\\d+)";
     public static Map<String, Class<? extends MusicItem>> strToTypes = Map.of(
         "band", Band.class,
@@ -118,7 +119,7 @@ public class App {
         }),
 
         // set
-        entry(String.format("set %s %s info %s", type, n, text), m -> {
+        entry(String.format("set %s %s info %s", type, n, freetext), m -> {
             Class<? extends MusicItem> type = strToTypes.get(m.group(1));
             MusicItem.getFromRegistry(type, toInt(m.group(2)) - 1).info = m.group(3);
         }),

@@ -88,16 +88,19 @@ class Artist extends MusicItem {
         enumerate(getBandsView());
 
         System.out.println("\nBand history:");
-        for (Band band : getBandsView()) {
-            System.out.printf("%s:\n", band);
-            List<Integer> history = band.artistHistories.get(this);
-            for (int i = 0; i < history.size(); i++) {
-                if (i == 0) { 
-                    System.out.printf("  - joined in %d\n", history.get(i)); 
-                } else if (i % 2 != 0) {
-                    System.out.printf("  - left in %d\n", history.get(i));
-                } else {
-                    System.out.printf("  - rejoined in %d\n", history.get(i));
+        for (MusicItem musicItem : getRegistryOf(Band.class)) {
+            Band band = (Band) musicItem;
+            List<Integer> history = band.getArtistHistory(this);
+            if (history.size() != 0) {
+                System.out.printf("%s:\n", band);
+                for (int i = 0; i < history.size(); i++) {
+                    if (i == 0) { 
+                        System.out.printf("  - joined in %d\n", history.get(i)); 
+                    } else if (i % 2 != 0) {
+                        System.out.printf("  - left in %d\n", history.get(i));
+                    } else {
+                        System.out.printf("  - rejoined in %d\n", history.get(i));
+                    }
                 }
             }
         }
