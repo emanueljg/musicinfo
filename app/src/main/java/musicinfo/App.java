@@ -59,9 +59,9 @@ public class App {
                         save (filename): saves the current state of the program
                         load (filename): load the saved file
                         
-                        new band (name) (bandStart) [bandEnd]: creates a new band.
-                        new artist (name) (birthYear): creates a new artist.
-                        new album (name) (releaseYear): creates a new album.
+                        new band (name) (bandStart) [bandEnd]: creates a new band
+                        new artist (name) (birthYear): creates a new artist
+                        new album (name) (releaseYear): creates a new album
                         
                         delete band (bandIndex) : deletes the band of the suggested index (list band to get index)
                         delete artist (artistIndex) : deletes the artist of the suggested index (list artist to get index)
