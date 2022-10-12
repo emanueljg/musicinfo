@@ -49,9 +49,6 @@ public class App {
         } 
     }
 
-    // Matcher m = Pattern.compile("hello (\\w+)").matcher("hello world");
-    // sout(m.group(0))
-    // System.out.println(m.group(1));  world
     public static Map<String, Consumer<Matcher>> cmds = Map.ofEntries(
         entry("help", m -> { 
             String help = """
