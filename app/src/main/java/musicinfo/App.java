@@ -1,7 +1,5 @@
 package musicinfo;
 
-import javax.sound.midi.Instrument;
-
 import static java.util.Map.entry;
 import java.util.*;
 import java.util.function.Consumer;
