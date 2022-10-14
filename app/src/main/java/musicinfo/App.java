@@ -31,8 +31,9 @@ public class App {
                 if (m.matches()) { 
                     try {
                         cmd.getValue().accept(m);
+                        System.out.println();
                     } catch (IndexOutOfBoundsException e) {
-                        System.out.printf("A music item with that index does not exist (%s)\n",
+                        System.out.printf("A music item with that index does not exist (%s)%n",
                                           e.getMessage());
                     }
                     found = true;
@@ -41,7 +42,7 @@ public class App {
             }
             if (!found) { 
                 System.out.printf("Command \"%s\" not found. " +
-                                  "Type \"help\" for a command reference.\n",
+                                  "Type \"help\" for a command reference.%n",
                                   input);
             }
         } 
@@ -54,7 +55,7 @@ public class App {
                         save (filename): saves the current state of the program
                         load (filename): load the saved file
                         
-                        list (band|artist|album): lists all of the musicItems.
+                        show (bands|artists|albums): lists all of the musicItems
                         show (band|artist|album) (index): show musicItem
                         
                         new band (name) (bandStart) [bandEnd]: creates a new band
@@ -93,7 +94,7 @@ public class App {
             System.out.println("Successfully loaded data from file!");
         }),
 
-        entry("list " + type, m -> {
+        entry(String.format("show %ss", type), m -> {
             Class<? extends MusicItem> type = strToTypes.get(m.group(1));
 
             if (MusicItem.getRegistryOf(type).toArray().length == 0) {
